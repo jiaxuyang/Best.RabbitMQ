@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Best RabbitMQ utility lib for .NET Core and .NET 4.6+</Description>
+    <Copyright>Copyright (C) 2016 BEST Logistics. All rights reserved.</Copyright>
+    <AssemblyTitle>Best.RabbitMQ utility lib</AssemblyTitle>
+    <VersionPrefix>4.0.0-alpha-1</VersionPrefix>
+    <Authors>BEST Logistics., Shi Jiyong</Authors>
+    <TargetFrameworks>net46;netcoreapp1.1;netstandard1.6</TargetFrameworks>
+    <AssemblyName>Best.RabbitMQ</AssemblyName>
+    <PackageId>Best.RabbitMQ</PackageId>
+    <PackageTags>EntLib;RabbitMQ</PackageTags>
+    <PackageReleaseNotes>Alpha for .NET Core; if you aren't doing .NET Core, you probably don't want this</PackageReleaseNotes>
+    <PackageIconUrl>https://raw.githubusercontent.com/JiyongShi/Best.EntLib/master/icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/JiyongShi/Best.RabbitMQ</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/JiyongShi/Best.RabbitMQ/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/JiyongShi/Best.RabbitMQ.git</RepositoryUrl>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.5' ">$(PackageTargetFallback);dnxcore50;portable-net452</PackageTargetFallback>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50;portable-net452</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="4.1.2" />
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.0-alpha-4" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
+    <PackageReference Include="Best.PerformanceCounterExt">
+      <Version>1.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp1.1'">
+  </ItemGroup>
+
+</Project>

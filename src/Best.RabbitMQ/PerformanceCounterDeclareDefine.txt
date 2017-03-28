@@ -1,0 +1,41 @@
+﻿[
+    {
+        "Category": {
+            "CategoryName": "Best.RabbitMQ",
+            "CategoryHelp": "Best RabbitMQ Client performances",
+            "CategoryType": "Unknown",
+        },
+        "Counters": [
+            {
+                "CounterName": "Connections",
+                "CounterHelper": "RabbitMQ connections in this machine",
+                "CounterType": "NumberOfItems64"
+            },
+			{
+                "CounterName": "Channels",
+                "CounterHelper": "RabbitMQ channels in this machine",
+                "CounterType": "NumberOfItems64"
+            },
+			{
+                "CounterName": "PublishMessages",
+                "CounterHelper": "RabbitMQ publish messages in this machine",
+                "CounterType": "NumberOfItems64"
+            },
+			{
+                "CounterName": "PublishMessages/sec",
+                "CounterHelper": "RabbitMQ publish messages per second in this machine",
+                "CounterType": "RateOfCountsPerSecond64"
+            },
+			{
+                "CounterName": "ConsumeMessages",
+                "CounterHelper": "RabbitMQ consume messages in this machine",
+                "CounterType": "NumberOfItems64"
+            },
+			{
+                "CounterName": "ConsumeMessages/sec",
+                "CounterHelper": "RabbitMQ consume messages per second in this machine",
+                "CounterType": "RateOfCountsPerSecond64"
+            }
+        ]
+    }
+]

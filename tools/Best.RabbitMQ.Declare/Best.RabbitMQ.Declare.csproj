@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.0-alpha-4" />
+    <PackageReference Include="Best.EntLib.Log.Imp.NLog" Version="5.0.0-alpha-4" />
+    <PackageReference Include="CommandLineParser" Version="2.1.1-beta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\test\Best.RabbitMQ.Test\Best.RabbitMQ.Test.csproj" />
+  </ItemGroup>
+
+</Project>
