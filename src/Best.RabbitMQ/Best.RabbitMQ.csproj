@@ -4,9 +4,10 @@
     <Description>Best RabbitMQ utility lib for .NET Core and .NET 4.6+</Description>
     <Copyright>Copyright (C) 2016 BEST Logistics. All rights reserved.</Copyright>
     <AssemblyTitle>Best.RabbitMQ utility lib</AssemblyTitle>
-    <VersionPrefix>4.0.0-alpha-1</VersionPrefix>
+    <VersionPrefix>4.0.0-alpha-2</VersionPrefix>
     <Authors>BEST Logistics., Shi Jiyong</Authors>
     <TargetFrameworks>net46;netcoreapp1.1;netstandard1.6</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Best.RabbitMQ</AssemblyName>
     <PackageId>Best.RabbitMQ</PackageId>
     <PackageTags>EntLib;RabbitMQ</PackageTags>
@@ -18,9 +19,8 @@
     <RepositoryUrl>https://github.com/JiyongShi/Best.RabbitMQ.git</RepositoryUrl>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.5' ">$(PackageTargetFallback);dnxcore50;portable-net452</PackageTargetFallback>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50;portable-net452</PackageTargetFallback>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
