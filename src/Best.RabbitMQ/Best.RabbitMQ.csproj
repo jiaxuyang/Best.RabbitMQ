@@ -4,7 +4,7 @@
     <Description>Best RabbitMQ utility lib for .NET Core and .NET 4.6+</Description>
     <Copyright>Copyright (C) 2016 BEST Logistics. All rights reserved.</Copyright>
     <AssemblyTitle>Best.RabbitMQ utility lib</AssemblyTitle>
-    <VersionPrefix>4.0.0-alpha-2</VersionPrefix>
+    <VersionPrefix>4.0.0-alpha-3</VersionPrefix>
     <Authors>BEST Logistics., Shi Jiyong</Authors>
     <TargetFrameworks>net46;netcoreapp1.1;netstandard1.6</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -17,15 +17,13 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/JiyongShi/Best.RabbitMQ/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/JiyongShi/Best.RabbitMQ.git</RepositoryUrl>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.5' ">$(PackageTargetFallback);dnxcore50;portable-net452</PackageTargetFallback>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50;portable-net452</PackageTargetFallback>
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="RabbitMQ.Client" Version="4.1.2" />
-    <PackageReference Include="Best.EntLib.Log" Version="5.0.0-alpha-4" />
+    <PackageReference Include="RabbitMQ.Client" Version="4.1.3" />
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.0-alpha-9" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">

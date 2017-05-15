@@ -36,16 +36,6 @@ namespace Best.RabbitMQ.Managements
         /// 
         /// </summary>
         /// <param name="queueName"></param>
-        // ReSharper disable once RedundantOverload.Global
-        public void QueueDeclare(string queueName)
-        {
-            QueueDeclare(queueName, true, false, false, null);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="queueName"></param>
         /// <param name="durable"></param>
         /// <param name="exclusive"></param>
         /// <param name="autoDelete"></param>

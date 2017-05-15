@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
 namespace Best.RabbitMQ
