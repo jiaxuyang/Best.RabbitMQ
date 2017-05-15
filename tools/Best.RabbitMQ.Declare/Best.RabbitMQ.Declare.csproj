@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Best.EntLib.Log" Version="5.0.0-alpha-9" />
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.2-alpha2" />
     <PackageReference Include="Best.EntLib.Log.Imp.NLog" Version="5.0.0-alpha-9" />
     <PackageReference Include="CommandLineParser" Version="2.1.1-beta" />
   </ItemGroup>
