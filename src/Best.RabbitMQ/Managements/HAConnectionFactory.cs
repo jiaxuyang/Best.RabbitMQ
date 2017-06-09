@@ -240,7 +240,7 @@ namespace Best.RabbitMQ.Managements
 #endif
                             }
 
-                        } while (tryedConnUrlList.Count >= HAConnectionUrlList.Count);
+                        } while (tryedConnUrlList.Count < HAConnectionUrlList.Count);
                     }
                     break;
                 default:
