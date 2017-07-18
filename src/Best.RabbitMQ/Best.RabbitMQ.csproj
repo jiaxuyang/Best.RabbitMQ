@@ -4,7 +4,8 @@
     <Description>Best RabbitMQ utility lib for .NET Core and .NET 4.6+</Description>
     <Copyright>Copyright (C) 2016 BEST Logistics. All rights reserved.</Copyright>
     <AssemblyTitle>Best.RabbitMQ utility lib</AssemblyTitle>
-    <VersionPrefix>4.0.2-alpha2</VersionPrefix>
+    <VersionPrefix>4.0.3</VersionPrefix>
+    <VersionSuffix>beta</VersionSuffix>
     <Authors>BEST Logistics., Shi Jiyong</Authors>
     <TargetFrameworks>net46;netcoreapp1.1;netstandard1.6</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -19,6 +20,9 @@
     <RepositoryUrl>https://github.com/JiyongShi/Best.RabbitMQ.git</RepositoryUrl>
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
 
   <ItemGroup>
