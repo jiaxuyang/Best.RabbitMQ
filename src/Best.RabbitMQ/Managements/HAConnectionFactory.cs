@@ -157,23 +157,26 @@ namespace Best.RabbitMQ.Managements
         private RabbitMQConnectionPool AddToMapConnectionPool(string amqpUrl)
         {
             RabbitMQConnectionPool pool;
-            if (!UrlPoolMap.TryGetValue(amqpUrl, out pool))
+            if (UrlPoolMap.TryGetValue(amqpUrl, out pool))
+                return pool;
+
+            var connFactory = new ConnectionFactory
             {
-                var connFactory = new ConnectionFactory
-                {
-                    Uri = amqpUrl,
-                    RequestedChannelMax = ChannelMax,
-                    RequestedConnectionTimeout = ConnectionTimeout,
-                    RequestedFrameMax = FrameMax,
-                    RequestedHeartbeat = Heartbeat,
-                    AutomaticRecoveryEnabled = true,
-                    NetworkRecoveryInterval = TimeSpan.FromSeconds(NetworkRecoveryInterval),
-                    TopologyRecoveryEnabled = true
-                };
-                pool = new RabbitMQConnectionPool(connFactory, amqpUrl, ChannelMax);
-                UrlPoolMap.TryAdd(amqpUrl, pool);
-            }
-            return pool;
+                Uri = amqpUrl,
+                RequestedChannelMax = ChannelMax,
+                RequestedConnectionTimeout = ConnectionTimeout,
+                RequestedFrameMax = FrameMax,
+                RequestedHeartbeat = Heartbeat,
+                AutomaticRecoveryEnabled = true,
+                NetworkRecoveryInterval = TimeSpan.FromSeconds(NetworkRecoveryInterval),
+                TopologyRecoveryEnabled = true
+            };
+            pool = new RabbitMQConnectionPool(connFactory, amqpUrl, ChannelMax);
+            var poolCached = UrlPoolMap.AddOrUpdate(amqpUrl, pool,(k,o)=> {
+                pool.Dispose();
+                return o;
+            });
+            return poolCached;
         }
 
         /// <summary>

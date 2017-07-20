@@ -47,7 +47,7 @@ namespace Best.RabbitMQ
             _mqConnectionPoolList = HAConnectionFactory.CreateAllConnectionPool();
         }
 
-        private volatile bool _isConsuming;
+        private bool _isConsuming;
 
         /// <summary>
         /// 
