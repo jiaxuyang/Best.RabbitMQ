@@ -162,7 +162,7 @@ namespace Best.RabbitMQ.Managements
 
             var connFactory = new ConnectionFactory
             {
-                Uri = amqpUrl,
+                Uri = new Uri(amqpUrl),
                 RequestedChannelMax = ChannelMax,
                 RequestedConnectionTimeout = ConnectionTimeout,
                 RequestedFrameMax = FrameMax,

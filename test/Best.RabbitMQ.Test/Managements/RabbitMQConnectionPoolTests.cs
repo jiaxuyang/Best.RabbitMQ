@@ -21,7 +21,7 @@ namespace Best.RabbitMQ.Managements.Tests
             var amqpUrl = RabbitMQServers.MasterAMQPUrl;
             var connFactory = new ConnectionFactory
             {
-                Uri = amqpUrl,
+                Uri = new Uri(amqpUrl),
                 RequestedChannelMax = 10000,
                 RequestedConnectionTimeout = 3000,
                 RequestedFrameMax = 1024000,
@@ -87,7 +87,7 @@ namespace Best.RabbitMQ.Managements.Tests
             var amqpUrl = RabbitMQServers.MasterAMQPUrl;
             var connFactory = new ConnectionFactory
             {
-                Uri = amqpUrl,
+                Uri = new Uri(amqpUrl),
                 RequestedChannelMax = 10000,
                 RequestedConnectionTimeout = 3000,
                 RequestedFrameMax = 1024000,
