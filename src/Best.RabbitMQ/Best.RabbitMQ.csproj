@@ -4,8 +4,8 @@
     <Description>Best RabbitMQ utility lib for .NET Core and .NET 4.6+</Description>
     <Copyright>Copyright (C) 2016 BEST Logistics. All rights reserved.</Copyright>
     <AssemblyTitle>Best.RabbitMQ utility lib</AssemblyTitle>
-    <VersionPrefix>4.0.6</VersionPrefix>
-    <VersionSuffix>beta</VersionSuffix>
+    <VersionPrefix>4.0.7</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
     <Authors>BEST Logistics., Shi Jiyong</Authors>
     <TargetFrameworks>net46;netcoreapp1.1;netstandard1.6</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="RabbitMQ.Client" Version="5.0.1" />
-    <PackageReference Include="Best.EntLib.Log" Version="5.0.5-beta" />
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.6" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
