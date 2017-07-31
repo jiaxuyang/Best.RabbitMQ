@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="RabbitMQ.Client" Version="5.0.1" />
-    <PackageReference Include="Best.EntLib.Log" Version="5.0.7" />
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.8" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
