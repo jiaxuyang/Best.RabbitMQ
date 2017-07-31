@@ -27,8 +27,6 @@ namespace Best.RabbitMQ.Managements
             LoadBalance
         }
 
-        private readonly Random _random = new Random();
-
         /// <summary>
         /// 
         /// </summary>
@@ -172,7 +170,8 @@ namespace Best.RabbitMQ.Managements
                 TopologyRecoveryEnabled = true
             };
             pool = new RabbitMQConnectionPool(connFactory, amqpUrl, ChannelMax);
-            var poolCached = UrlPoolMap.AddOrUpdate(amqpUrl, pool,(k,o)=> {
+            var poolCached = UrlPoolMap.AddOrUpdate(amqpUrl, pool, (k, o) =>
+            {
                 pool.Dispose();
                 return o;
             });
@@ -219,9 +218,11 @@ namespace Best.RabbitMQ.Managements
                         var tryedConnUrlList = new List<string>();
                         do
                         {
-                            var rndIndex = _random.Next(0, HAConnectionUrlList.Count);
+                            var hashCode = Math.Abs(Guid.NewGuid().GetHashCode());
+                            var rndIndex = hashCode % HAConnectionUrlList.Count;
                             var rndConnUrl = HAConnectionUrlList[rndIndex];
-                            tryedConnUrlList.Add(rndConnUrl);
+                            if (!tryedConnUrlList.Contains(rndConnUrl))
+                                tryedConnUrlList.Add(rndConnUrl);
                             try
                             {
                                 // Get or new pool obj
