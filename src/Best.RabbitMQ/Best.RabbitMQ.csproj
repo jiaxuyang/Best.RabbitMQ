@@ -7,7 +7,7 @@
     <VersionPrefix>4.0.9</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <Authors>BEST Logistics., Shi Jiyong</Authors>
-    <TargetFrameworks>net46;netcoreapp1.1;netstandard1.6</TargetFrameworks>
+    <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Best.RabbitMQ</AssemblyName>
     <PackageId>Best.RabbitMQ</PackageId>
@@ -27,19 +27,13 @@
 
   <ItemGroup>
     <PackageReference Include="RabbitMQ.Client" Version="5.0.1" />
-    <PackageReference Include="Best.EntLib.Log" Version="5.0.8" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.9" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
     <PackageReference Include="Best.PerformanceCounterExt">
       <Version>1.0.1</Version>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp1.1'">
   </ItemGroup>
 
 </Project>
