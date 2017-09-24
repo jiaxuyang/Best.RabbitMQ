@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Best.EntLib.Log" Version="5.0.10" />
-    <PackageReference Include="Best.EntLib.Log.Imp.NLog" Version="5.0.10" />
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.13" />
+    <PackageReference Include="Best.EntLib.Log.Imp.NLog" Version="5.0.13" />
     <PackageReference Include="CommandLineParser" Version="2.1.1-beta" />
   </ItemGroup>
 
