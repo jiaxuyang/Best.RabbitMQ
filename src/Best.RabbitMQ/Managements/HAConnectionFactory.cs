@@ -168,7 +168,8 @@ namespace Best.RabbitMQ.Managements
                     RequestedHeartbeat = Heartbeat,
                     AutomaticRecoveryEnabled = true,
                     NetworkRecoveryInterval = TimeSpan.FromSeconds(NetworkRecoveryInterval),
-                    TopologyRecoveryEnabled = true
+                    TopologyRecoveryEnabled = true,
+                    UseBackgroundThreadsForIO = true
                 };
                 pool = new RabbitMQConnectionPool(connFactory, amqpUrl, ChannelMax);
                 UrlPoolMap.TryAdd(amqpUrl, pool);
