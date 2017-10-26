@@ -2,12 +2,15 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Best.EntLib.Log" Version="5.0.2-alpha2" />
-    <PackageReference Include="Best.EntLib.Log.Imp.NLog" Version="5.0.0-alpha-9" />
+    <PackageReference Include="Best.EntLib.Log" Version="5.0.13" />
+    <PackageReference Include="Best.EntLib.Log.Imp.NLog" Version="5.0.13" />
     <PackageReference Include="CommandLineParser" Version="2.1.1-beta" />
   </ItemGroup>
 

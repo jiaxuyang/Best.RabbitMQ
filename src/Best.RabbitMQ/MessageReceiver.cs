@@ -14,6 +14,7 @@ namespace Best.RabbitMQ
         private HAConnectionFactory HAConnectionFactory { get; }
 
         private volatile IList<RabbitMQConnectionPool> _mqConnectionPoolList;
+        private volatile IList<EventingBasicConsumer> _mqConsumerList;
 
         /// <summary>
         /// 
@@ -45,6 +46,7 @@ namespace Best.RabbitMQ
             RetryInterval = retryInterval;
 
             _mqConnectionPoolList = HAConnectionFactory.CreateAllConnectionPool();
+            _mqConsumerList = new List<EventingBasicConsumer>();
         }
 
         private volatile bool _isConsuming;
@@ -86,9 +88,9 @@ namespace Best.RabbitMQ
                 consumer.ConsumerCancelled += Consumer_ConsumerCancelled;
                 // limit flow
 #if DEBUG
-                ushort prefetchCount = 10;
+                ushort prefetchCount = 20;
 #else
-                ushort prefetchCount = 1000;
+                ushort prefetchCount = 200;
 #endif
                 consumer.Model.BasicQos(0, prefetchCount, false);
                 // start consume
@@ -96,14 +98,11 @@ namespace Best.RabbitMQ
                    QueueName,
                    false,
                    consumer);
+
+                // 
+                _mqConsumerList.Add(consumer);
+
                 EntLib.Log.Logger.LogInfo($"{connection.UserName}:{connection.HostName}/{connection.VHost} ChannelNumber:{consumer.Model.ChannelNumber} ConsumerTag:{consumerTag}");
-                //var thread = new Thread(Consume)
-                //{
-                //    Name = "RMQ_Recv_" + connectionPool.AMQPUrl,
-                //    IsBackground = false
-                //};
-                //thread.Start(connectionPool);
-                //Best.EntLib.Log.Logger.LogInfo($"Start consume on queue:{0}");
             }
             return true;
         }
@@ -164,6 +163,10 @@ namespace Best.RabbitMQ
         public void Close()
         {
             _isConsuming = false;
+            foreach (var consumer in _mqConsumerList)
+            {
+                consumer.Model.Close();
+            }
 
             if (_mqConnectionPoolList != null)
             {

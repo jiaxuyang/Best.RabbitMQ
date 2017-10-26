@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net46;netcoreapp1.1</TargetFrameworks>
+    <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-    <PackageReference Include="dotnet-test-nunit" Version="3.4.0-beta-3" />
-    <PackageReference Include="NUnit" Version="3.6.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="NUnit" Version="3.8.1" />
   </ItemGroup>
 
   <ItemGroup>

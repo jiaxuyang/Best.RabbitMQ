@@ -27,8 +27,6 @@ namespace Best.RabbitMQ.Managements
             LoadBalance
         }
 
-        private readonly Random _random = new Random();
-
         /// <summary>
         /// 
         /// </summary>
@@ -157,24 +155,28 @@ namespace Best.RabbitMQ.Managements
         private RabbitMQConnectionPool AddToMapConnectionPool(string amqpUrl)
         {
             RabbitMQConnectionPool pool;
-            if (!UrlPoolMap.TryGetValue(amqpUrl, out pool))
+            if (UrlPoolMap.TryGetValue(amqpUrl, out pool))
+                return pool;
+
+            var connFactory = new ConnectionFactory
             {
-                var connFactory = new ConnectionFactory
-                {
-                    Uri = amqpUrl,
-                    RequestedChannelMax = ChannelMax,
-                    RequestedConnectionTimeout = ConnectionTimeout,
-                    RequestedFrameMax = FrameMax,
-                    RequestedHeartbeat = Heartbeat,
-                    AutomaticRecoveryEnabled = true,
-                    NetworkRecoveryInterval = TimeSpan.FromSeconds(NetworkRecoveryInterval),
-                    TopologyRecoveryEnabled = true,
-                    UseBackgroundThreadsForIO = true
-                };
-                pool = new RabbitMQConnectionPool(connFactory, amqpUrl, ChannelMax);
-                UrlPoolMap.TryAdd(amqpUrl, pool);
-            }
-            return pool;
+                Uri = new Uri(amqpUrl),
+                RequestedChannelMax = ChannelMax,
+                RequestedConnectionTimeout = ConnectionTimeout,
+                RequestedFrameMax = FrameMax,
+                RequestedHeartbeat = Heartbeat,
+                AutomaticRecoveryEnabled = true,
+                NetworkRecoveryInterval = TimeSpan.FromSeconds(NetworkRecoveryInterval),
+                TopologyRecoveryEnabled = true,
+                UseBackgroundThreadsForIO = true
+            };
+            pool = new RabbitMQConnectionPool(connFactory, amqpUrl, ChannelMax);
+            var poolCached = UrlPoolMap.AddOrUpdate(amqpUrl, pool, (k, o) =>
+            {
+                pool.Dispose();
+                return o;
+            });
+            return poolCached;
         }
 
         /// <summary>
@@ -217,9 +219,11 @@ namespace Best.RabbitMQ.Managements
                         var tryedConnUrlList = new List<string>();
                         do
                         {
-                            var rndIndex = _random.Next(0, HAConnectionUrlList.Count);
+                            var hashCode = Math.Abs(Guid.NewGuid().GetHashCode());
+                            var rndIndex = hashCode % HAConnectionUrlList.Count;
                             var rndConnUrl = HAConnectionUrlList[rndIndex];
-                            tryedConnUrlList.Add(rndConnUrl);
+                            if (!tryedConnUrlList.Contains(rndConnUrl))
+                                tryedConnUrlList.Add(rndConnUrl);
                             try
                             {
                                 // Get or new pool obj
